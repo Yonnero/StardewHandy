@@ -1,0 +1,38 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Кладовая",
+      "bundles": [
+        {
+          "id": 1,
+          "title": "Весенние культуры",
+          "requiredItemsCount": 4,
+          "items": [
+            {"id": 1, "name": "Пастернак", "isDonated": false},
+            {"id": 2, "name": "Зеленая фасоль", "isDonated": false},
+            {"id": 3, "name": "Цветная капуста", "isDonated": false},
+            {"id": 4, "name": "Картофель", "isDonated": false}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Аквариум",
+      "bundles": [
+        {
+          "id": 2,
+          "title": "Речная рыба",
+          "requiredItemsCount": 4,
+          "items": [
+            {"id": 5, "name": "Сом", "isDonated": false},
+            {"id": 6, "name": "Солнечник", "isDonated": false},
+            {"id": 7, "name": "Тигровая форель", "isDonated": false},
+            {"id": 8, "name": "Лещ", "isDonated": false}
+          ]
+        }
+      ]
+    }
+  ]
+}

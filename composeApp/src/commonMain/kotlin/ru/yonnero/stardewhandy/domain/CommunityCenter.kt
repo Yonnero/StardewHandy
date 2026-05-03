@@ -1,11 +1,16 @@
 package ru.yonnero.stardewhandy.domain
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class BundleItem(
     val id: Int,
     val name: String,
     val isDonated: Boolean = false
 )
 
+
+@Serializable
 data class Bundle(
     val id: Int,
     val title: String,
@@ -16,6 +21,8 @@ data class Bundle(
         get() = items.count { it.isDonated } >= requiredItemsCount
 }
 
+
+@Serializable
 data class Room(
     val id: Int,
     val name: String,
@@ -25,6 +32,8 @@ data class Room(
         get() = bundles.all { it.isCompleted }
 }
 
+
+@Serializable
 data class CommunityCenter(
     val rooms: List<Room>
 )
