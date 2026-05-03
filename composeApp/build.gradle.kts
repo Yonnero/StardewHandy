@@ -1,3 +1,6 @@
+@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
+
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -31,20 +34,17 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
-            implementation(libs.compose.runtime)
-            implementation(libs.compose.foundation)
-            implementation(libs.compose.material3)
-            implementation(libs.compose.ui)
-            implementation(libs.compose.components.resources)
-            implementation(libs.compose.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
-            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-            implementation("com.russhwolf:multiplatform-settings-no-arg:1.1.1")
-        }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
+            implementation(dependencyNotation = libs.compose.runtime)
+            implementation(dependencyNotation = libs.compose.foundation)
+            implementation(dependencyNotation = libs.compose.material3)
+            implementation(dependencyNotation = libs.compose.ui)
+            implementation(dependencyNotation = libs.compose.components.resources)
+            implementation(dependencyNotation = libs.compose.uiToolingPreview)
+            implementation(dependencyNotation = libs.androidx.lifecycle.viewmodelCompose)
+            implementation(dependencyNotation = libs.androidx.lifecycle.runtimeCompose)
+            implementation(dependencyNotation = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+            implementation(dependencyNotation = "com.russhwolf:multiplatform-settings-no-arg:1.1.1")
+            implementation(dependencyNotation = "org.jetbrains.compose.material:material-icons-extended:1.7.3")
         }
     }
 }

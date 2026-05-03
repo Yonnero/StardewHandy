@@ -2,34 +2,82 @@
   "rooms": [
     {
       "id": 1,
-      "name": "Кладовая",
+      "name": "Клубная комната",
       "bundles": [
         {
           "id": 1,
-          "title": "Весенние культуры",
+          "title": "Весенняя собирательство",
           "requiredItemsCount": 4,
           "items": [
-            {"id": 1, "name": "Пастернак", "isDonated": false},
-            {"id": 2, "name": "Зеленая фасоль", "isDonated": false},
-            {"id": 3, "name": "Цветная капуста", "isDonated": false},
-            {"id": 4, "name": "Картофель", "isDonated": false}
+            {"id": 1, "name": "Дикий хрен", "isDonated": false},
+            {"id": 2, "name": "Нарцисс", "isDonated": false},
+            {"id": 3, "name": "Лук-порей", "isDonated": false},
+            {"id": 4, "name": "Одуванчик", "isDonated": false}
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Летняя собирательство",
+          "requiredItemsCount": 3,
+          "items": [
+            {"id": 5, "name": "Виноград", "isDonated": false},
+            {"id": 6, "name": "Пряная ягода", "isDonated": false},
+            {"id": 7, "name": "Душистый горошек", "isDonated": false}
           ]
         }
       ]
     },
     {
       "id": 2,
+      "name": "Кладовая",
+      "bundles": [
+        {
+          "id": 3,
+          "title": "Животноводство",
+          "requiredItemsCount": 5,
+          "items": [
+            {"id": 8, "name": "Большое молоко", "isDonated": false},
+            {"id": 9, "name": "Большое коричневое яйцо", "isDonated": false},
+            {"id": 10, "name": "Большое белое яйцо", "isDonated": false},
+            {"id": 11, "name": "Большое козье молоко", "isDonated": false},
+            {"id": 12, "name": "Шерсть", "isDonated": false},
+            {"id": 13, "name": "Утиное яйцо", "isDonated": false}
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Ремесленник",
+          "requiredItemsCount": 6,
+          "items": [
+            {"id": 14, "name": "Трюфельное масло", "isDonated": false},
+            {"id": 15, "name": "Ткань", "isDonated": false},
+            {"id": 16, "name": "Козий сыр", "isDonated": false},
+            {"id": 17, "name": "Сыр", "isDonated": false},
+            {"id": 18, "name": "Мед", "isDonated": false},
+            {"id": 19, "name": "Вишневое желе", "isDonated": false},
+            {"id": 20, "name": "Яблоко", "isDonated": false},
+            {"id": 21, "name": "Абрикос", "isDonated": false},
+            {"id": 22, "name": "Апельсин", "isDonated": false},
+            {"id": 23, "name": "Персик", "isDonated": false},
+            {"id": 24, "name": "Гранат", "isDonated": false},
+            {"id": 25, "name": "Вишня", "isDonated": false}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
       "name": "Аквариум",
       "bundles": [
         {
-          "id": 2,
+          "id": 5,
           "title": "Речная рыба",
           "requiredItemsCount": 4,
           "items": [
-            {"id": 5, "name": "Сом", "isDonated": false},
-            {"id": 6, "name": "Солнечник", "isDonated": false},
-            {"id": 7, "name": "Тигровая форель", "isDonated": false},
-            {"id": 8, "name": "Лещ", "isDonated": false}
+            {"id": 26, "name": "Солнечник", "isDonated": false},
+            {"id": 27, "name": "Сом", "isDonated": false},
+            {"id": 28, "name": "Шэд", "isDonated": false},
+            {"id": 29, "name": "Тигровая форель", "isDonated": false}
           ]
         }
       ]

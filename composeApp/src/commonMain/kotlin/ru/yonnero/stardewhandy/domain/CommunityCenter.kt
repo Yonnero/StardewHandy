@@ -19,6 +19,9 @@ data class Bundle(
 ) {
     val isCompleted: Boolean
         get() = items.count { it.isDonated } >= requiredItemsCount
+
+    val remainingItemsCount: Int
+        get() = maxOf(0, requiredItemsCount - items.count { it.isDonated })
 }
 
 

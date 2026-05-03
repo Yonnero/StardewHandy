@@ -10,6 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ru.yonnero.stardewhandy.domain.Bundle
 import ru.yonnero.stardewhandy.domain.Room
+import androidx.compose.ui.text.font.FontFamily
+import org.jetbrains.compose.resources.Font
+import stardewhandy.composeapp.generated.resources.Res
+import stardewhandy.composeapp.generated.resources.pixel_font
 
 
 @Composable
@@ -35,20 +39,23 @@ fun CommunityCenterScreen(viewModel: CommunityCenterViewModel) {
 
 @Composable
 fun RoomCard(room: Room, onItemClick: (Int) -> Unit) {
+    val stardewFont = FontFamily(Font(Res.font.pixel_font))
+
     Card(
         modifier = Modifier.fillMaxWidth(),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(all = 16.dp)) {
             Text(
                 text = "${room.name} ${if (room.isCompleted) "✅" else ""}",
-                style = MaterialTheme.typography.headlineSmall
+                fontFamily = stardewFont,
+                style = MaterialTheme.typography.headlineMedium
             )
-            Spacer(modifier = Modifier.height(8.dp))
+
+            Spacer(modifier = Modifier.height(height = 8.dp))
 
             room.bundles.forEach { bundle ->
                 BundleView(bundle = bundle, onItemClick = onItemClick)
-                Spacer(modifier = Modifier.height(12.dp))
             }
         }
     }
@@ -57,9 +64,11 @@ fun RoomCard(room: Room, onItemClick: (Int) -> Unit) {
 @Composable
 fun BundleView(bundle: Bundle, onItemClick: (Int) -> Unit) {
     Column(modifier = Modifier.padding(start = 8.dp)) {
+        val stardewFont = FontFamily(Font(Res.font.pixel_font))
         Text(
-            text = "${bundle.title} (${if (bundle.isCompleted) "Завершен" else "Нужно сдать: ${bundle.requiredItemsCount}"})",
+            text = "${bundle.title} (${if (bundle.isCompleted) "Завершен" else "Осталось: ${bundle.remainingItemsCount}"})",
             style = MaterialTheme.typography.titleMedium,
+            fontFamily = stardewFont,
             color = MaterialTheme.colorScheme.primary
         )
 
@@ -67,7 +76,7 @@ fun BundleView(bundle: Bundle, onItemClick: (Int) -> Unit) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Checkbox(
                     checked = item.isDonated,
-                    onCheckedChange = { onItemClick(item.id) } // Клик улетает в ViewModel!
+                    onCheckedChange = { onItemClick(item.id) }
                 )
                 Text(text = item.name)
             }
