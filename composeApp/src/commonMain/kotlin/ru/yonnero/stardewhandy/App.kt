@@ -13,6 +13,7 @@ import ru.yonnero.stardewhandy.presentation.CommunityCenterViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import ru.yonnero.stardewhandy.theme.StardewTheme
 
 enum class Screen {
     CommunityCenter,
@@ -22,7 +23,8 @@ enum class Screen {
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
+
+    StardewTheme {
         val communityCenterViewModel = remember { CommunityCenterViewModel() }
         var currentScreen by remember { mutableStateOf(Screen.CommunityCenter) }
 

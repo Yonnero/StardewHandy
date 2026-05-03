@@ -14,7 +14,9 @@ import androidx.compose.ui.text.font.FontFamily
 import org.jetbrains.compose.resources.Font
 import stardewhandy.composeapp.generated.resources.Res
 import stardewhandy.composeapp.generated.resources.pixel_font
-
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CardDefaults
+import androidx.compose.foundation.BorderStroke
 
 @Composable
 fun CommunityCenterScreen(viewModel: CommunityCenterViewModel) {
@@ -41,9 +43,14 @@ fun CommunityCenterScreen(viewModel: CommunityCenterViewModel) {
 fun RoomCard(room: Room, onItemClick: (Int) -> Unit) {
     val stardewFont = FontFamily(Font(Res.font.pixel_font))
 
+
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+        shape = RoundedCornerShape(size = 4.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        border = BorderStroke(width = 4.dp, color = MaterialTheme.colorScheme.outline)
+
     ) {
         Column(modifier = Modifier.padding(all = 16.dp)) {
             Text(
