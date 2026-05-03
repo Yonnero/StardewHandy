@@ -16,6 +16,10 @@ import ru.yonnero.stardewhandy.domain.Room
 fun CommunityCenterScreen(viewModel: CommunityCenterViewModel) {
     val state by viewModel.uiState.collectAsState()
 
+    LaunchedEffect(Unit) {
+        viewModel.loadData()
+    }
+
     LazyColumn(
         modifier = Modifier.fillMaxSize().padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)

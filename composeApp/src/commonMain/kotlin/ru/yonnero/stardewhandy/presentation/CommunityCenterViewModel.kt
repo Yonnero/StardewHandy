@@ -10,9 +10,14 @@ class CommunityCenterViewModel {
 
     private val repository = FakeCommunityCenterRepository()
 
-    private val _uiState = MutableStateFlow(repository.getCommunityCenter())
-
+    private val _uiState = MutableStateFlow(CommunityCenter(emptyList()))
     val uiState: StateFlow<CommunityCenter> = _uiState.asStateFlow()
+
+    suspend fun loadData() {
+        repository.loadData()
+
+        _uiState.value = repository.getCommunityCenter()
+    }
 
     fun onToggleItem(itemId: Int) {
         repository.toggleItemDonation(itemId)

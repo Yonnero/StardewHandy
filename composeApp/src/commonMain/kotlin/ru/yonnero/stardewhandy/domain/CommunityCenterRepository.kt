@@ -2,7 +2,8 @@ package ru.yonnero.stardewhandy.domain
 
 interface CommunityCenterRepository {
 
-    fun getCommunityCenter(): CommunityCenter
+    suspend fun loadData()
 
+    fun getCommunityCenter(): CommunityCenter
     fun toggleItemDonation(itemId: Int)
 }
