@@ -17,7 +17,52 @@ import stardewhandy.composeapp.generated.resources.pixel_font
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorMatrix
+import androidx.compose.ui.unit.sp
+import org.jetbrains.compose.resources.painterResource
+import stardewhandy.composeapp.generated.resources.wild_horseradish
 
+
+@Composable
+fun ItemRowWithIcon(
+    itemName: String,
+    isDonated: Boolean,
+    isBundleCompleted: Boolean,
+    onItemClick: () -> Unit
+) {
+    val isNotNeeded = isBundleCompleted && !isDonated
+    val colorFilter = if (isDonated) null else ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0f) })
+    val alpha = if (isNotNeeded) 0.4f else 1f
+
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onItemClick() }
+            .padding(vertical = 4.dp)
+    ) {
+        Image(
+            painter = painterResource(Res.drawable.wild_horseradish),
+            contentDescription = itemName,
+            colorFilter = colorFilter,
+            alpha = alpha,
+            modifier = Modifier.size(32.dp)
+        )
+
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            text = itemName,
+            fontFamily = FontFamily(Font(Res.font.pixel_font)),
+            fontSize = 14.sp,
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.alpha(if (isNotNeeded) 0.5f else 1f)
+        )
+    }
+}
 @Composable
 fun CommunityCenterScreen(viewModel: CommunityCenterViewModel) {
     val state by viewModel.uiState.collectAsState()
@@ -70,23 +115,26 @@ fun RoomCard(room: Room, onItemClick: (Int) -> Unit) {
 
 @Composable
 fun BundleView(bundle: Bundle, onItemClick: (Int) -> Unit) {
-    Column(modifier = Modifier.padding(start = 8.dp)) {
+    Column(modifier = Modifier.padding(start = 8.dp, top = 8.dp)) {
         val stardewFont = FontFamily(Font(Res.font.pixel_font))
         Text(
             text = "${bundle.title} (${if (bundle.isCompleted) "Завершен" else "Осталось: ${bundle.remainingItemsCount}"})",
-            style = MaterialTheme.typography.titleMedium,
-            fontFamily = stardewFont,
-            color = MaterialTheme.colorScheme.primary
+            fontFamily = FontFamily(Font(Res.font.pixel_font)),
+            fontSize = 18.sp,
+            color = MaterialTheme.colorScheme.onSurface
         )
 
+        Spacer(modifier = Modifier.height(8.dp))
+
         bundle.items.forEach { item ->
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Checkbox(
-                    checked = item.isDonated,
-                    onCheckedChange = { onItemClick(item.id) }
-                )
-                Text(text = item.name)
-            }
+            ItemRowWithIcon(
+                itemName = item.name,
+                isDonated = item.isDonated,
+                isBundleCompleted = bundle.isCompleted,
+                onItemClick = { onItemClick(item.id) }
+            )
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }
