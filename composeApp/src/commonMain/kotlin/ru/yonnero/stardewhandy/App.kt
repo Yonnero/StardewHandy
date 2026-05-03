@@ -14,6 +14,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import ru.yonnero.stardewhandy.theme.StardewTheme
+import org.jetbrains.compose.resources.stringResource
+import stardewhandy.composeapp.generated.resources.Res
+import stardewhandy.composeapp.generated.resources.tab_club
+import stardewhandy.composeapp.generated.resources.tab_villagers
 
 enum class Screen {
     CommunityCenter,
@@ -33,13 +37,13 @@ fun App() {
                 NavigationBar {
                     NavigationBarItem(
                         icon = { Icon(Icons.Filled.Home, contentDescription = "Клуб") },
-                        label = { Text("Клуб") },
+                        label = { Text(text = stringResource(Res.string.tab_club)) },
                         selected = currentScreen == Screen.CommunityCenter,
                         onClick = { currentScreen = Screen.CommunityCenter }
                     )
                     NavigationBarItem(
                         icon = { Icon(Icons.Filled.DateRange, contentDescription = "Жители") },
-                        label = { Text("Жители") },
+                        label = { Text(text = stringResource(Res.string.tab_villagers)) },
                         selected = currentScreen == Screen.Villagers,
                         onClick = { currentScreen = Screen.Villagers }
                     )
@@ -51,6 +55,7 @@ fun App() {
                     Screen.CommunityCenter -> {
                         CommunityCenterScreen(viewModel = communityCenterViewModel)
                     }
+
                     Screen.Villagers -> {
                         Text("Здесь будет справочник жителей и подарков!")
                     }
